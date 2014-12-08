@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>Space Invaders</title>
-<link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' />
-<style>
-body {
-  padding:0;
-  margin:0;
-  background:#666;
-}
-canvas {
-  display:block;
-  margin:30px auto 0;
-  border:1px dashed #ccc;
-  background:#000;
-}
-</style>
-<script src="jquery.js"></script>
-<script>
 
 var GUI = {
 	paused : 0 //0 if not paused, 1 if paused
@@ -309,10 +288,3 @@ document.onkeydown = function(evt) {
 		GUI.paused = 0;
 	}
 };
-</script>
-</head>
-
-<body>
-  <canvas id="canvas" width="600" height="600"></canvas>
-</body>
-</html>
