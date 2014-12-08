@@ -284,7 +284,9 @@ document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode == 27 && GUI.paused == 0) {
         GUI.paused = 1;
+        $('.size').styleddropdown();
     }else if (evt.keyCode == 27 && GUI.paused == 1){
 		GUI.paused = 0;
+		$('.size').styleddropdown();
 	}
 };
