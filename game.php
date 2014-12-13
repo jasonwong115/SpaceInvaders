@@ -46,9 +46,9 @@ canvas {
 }
 .size>ul.list li:last-child { border:none }
 </style>
-<script src="jquery.js"></script>
-<script src="game_logic.js"></script>
-<script src="menu_logic.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/game_logic.js"></script>
+<script src="js/menu_logic.js"></script>
 </head>
 
 <body>
