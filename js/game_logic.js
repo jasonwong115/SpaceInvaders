@@ -229,11 +229,11 @@ function init() {
   canvas = document.getElementById('canvas');
   ctx = canvas.getContext('2d');
   enemy = new Image();
-  enemy.src = '8bit_enemy.png';
+  enemy.src = 'imgs/8bit_enemy.png';
   ship = new Image();
-  ship.src = 'ship.png';
+  ship.src = 'imgs/ship.png';
   starfield = new Image();
-  starfield.src = 'starfield.jpg';
+  starfield.src = 'imgs/starfield.jpg';
   document.addEventListener('keydown', keyDown, false);
   document.addEventListener('keyup', keyUp, false);
         canvas.addEventListener('click', gameStart, false);
