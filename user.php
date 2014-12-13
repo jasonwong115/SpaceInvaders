@@ -28,6 +28,10 @@ label, h1, .white-text{
 </head>
 
 <body>
+<?php
+	session_start();
+	echo "<h1 style=\"color:white\">Welcome, " . $_SESSION['username'] . "</h1><br/>";
+?>
   <div id="mainarea">
   <form action="processing.php" method="get">
 	  <h1 class="white-text">Change Username</h1>

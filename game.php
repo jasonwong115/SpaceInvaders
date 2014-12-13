@@ -52,6 +52,10 @@ canvas {
 </head>
 
 <body>
+<?php
+	session_start();
+	echo "<h1 style=\"color:white\">Welcome, " . $_SESSION['username'] . "</h1><br/>";
+?>
   <canvas id="canvas" width="600" height="600"></canvas>
 </body>
 </html>
@@ -60,6 +64,8 @@ canvas {
 		<ul class="list">
 			<li id="resume">Resume</li>
 			<li id="restart">Restart</li>
+			<li onclick="location.href='user.php';">Change Username</li>
+			<li onclick="location.href='logout.php';">Logout</li>
 			<li id="exit">Exit</li>
 		</ul>
 </div>
