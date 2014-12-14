@@ -47,7 +47,7 @@ canvas {
 .size>ul.list li:last-child { border:none }
 </style>
 <script src="js/jquery.js"></script>
-<script src="js/game_logic.js"></script>
+<script src="js/game_logic_obf.js"></script>
 <script src="js/menu_logic.js"></script>
 </head>
 
@@ -66,6 +66,11 @@ canvas {
 			<li id="restart">Restart</li>
 			<li onclick="location.href='user.php';">Change Username</li>
 			<li onclick="location.href='logout.php';">Logout</li>
+			<?php
+			
+				echo "<li onclick=\"location.href='logout.php?src=" . $_SESSION['token'] . "';\">Logout (Secure)</li>";
+			
+			?>
 			<li id="exit">Exit</li>
 		</ul>
 </div>
