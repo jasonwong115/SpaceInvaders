@@ -7,13 +7,16 @@
 		$db = new DB();
 		$db->insertScore($username, $score);
 		echo "inserted";
+		header("Location: game.php");
 	}else if(isset($_GET["newUsername"]) && !isset($_GET["src"])){
 		session_start();
 		$username = $_SESSION['username'];
 		$newUsername = $_GET['newUsername'];
+		$_SESSION['username'] = $newUsername;
 		$db = new DB();
 		$db->updateUsername($username, $newUsername);
 		echo "updated";
+		header("Location: game.php");
 	}else if(isset($_GET["newUsername"]) && isset($_GET["src"])){
 		session_start();
 		$username = $_SESSION['username'];
@@ -23,11 +26,12 @@
 			$db = new DB();
 			$db->updateUsername($username, $newUsername);
 			$_SESSION['username'] = $newUsername;
-			$_SESSION['token'] = $newUsername;
+			$_SESSION['token'] = md5(uniqid(mt_rand(), true));
 			echo "updated";
 		}else{
 			echo "not updated";
 		}
+		header("Location: game.php");
 	}else if(isset($_POST["username"]) && isset($_POST["password"])){
 		session_start();
 		$username = $_POST['username'];
@@ -40,7 +44,7 @@
 			$_SESSION['token'] = $username;
 			header("Location: game.php");
 		}
-		echo "logged in";
+		echo "invalid login";
 	}
 
 	class DB {
