@@ -121,6 +121,13 @@
 			}
 		}
 
+		public function selectAllScores() {
+			$querySQL = "SELECT * FROM invaders.t6_scores ORDER BY score DESC";
+			$result = $this->mysqli->query($querySQL);
+
+			return $result;
+		}
+
 		//select a users scores
 		public function selectScores($username) {
 			$querySQL = "SELECT * FROM invaders.t6_scores where username= '$username'";

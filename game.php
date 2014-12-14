@@ -64,6 +64,7 @@ canvas {
 		<ul class="list">
 			<li id="resume">Resume</li>
 			<li id="restart">Restart</li>
+			<li onclick="location.href='highscores.php';">HighScores</li>
 			<li onclick="location.href='user.php';">Change Username</li>
 			<li onclick="location.href='logout.php';">Logout</li>
 			<?php
