@@ -47,7 +47,7 @@
 		private $mysqli;
 
 		function __construct() {
-			$this->mysqli = new mysqli("localhost","jason","wong","invaders");
+			$this->mysqli = new mysqli("LocalHost","root","","invaders");
 			
 			if ($this->mysqli->connect_errno) {
 				echo "Failed to connect to MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
