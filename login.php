@@ -37,7 +37,17 @@ label, h1, .white-text{
 	  <input name="username" type="text"></input><br/><br/>
 	  <label>Password</label>
 	  <input name="password" type="password"></input><br/><br/>
-	  <input type="submit"></input>
+	  <input type="submit" name="submitLogin"></input>
+  </form>
+
+  <h1>Register</h1>
+  <label>All fields required</label>
+  <form name="input" action="processing.php" method="post">
+  <label>Username: </label> <input type="text" name="username"><br>
+  <label>Password: </label><input type="text" name="password"><br>
+  <label>Confirm Password:</label> <input type="text" name="password2"><br>
+  <label>Email:</label> <input type="text" name="email"><br>
+  <input type="submit" name="submitRegister">
   </form>
   </div>
 </body>

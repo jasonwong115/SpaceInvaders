@@ -1,5 +1,68 @@
 <?php
 
+	if(isset($_POST['submitLogin'])) {
+
+		if(isset($_POST['username']) && isset($_POST['password'])) {
+			session_start();
+			echo 'Login Failed...<br/>';
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+			$hashedpassword = md5($password);
+			echo $hashedpassword;
+			$db = new DB();
+			$result = $db->selectUserAndPass($username, $hashedpassword);
+			$numrows = $result->num_rows;
+			if($numrows >0){
+				//any session variables from the user
+				$_SESSION['username'] = $username;
+				$_SESSION['token'] = $username;
+				header("Location: game.php");
+			}
+			else{
+				echo "Invalid username or password.";
+			}
+		}
+	}
+	else if(isset($_POST['submitRegister'])) {
+		echo 'Register<br/>';
+		$errors = "";
+		$username = $_POST['username'];
+		if(!ctype_alnum($username)){
+			$errors.= 'Invalid username: only letters and numbers allowed.<br/>';
+		}
+		$email = $_POST["email"];
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+	  		$errors.= "Invalid email format.<br/>"; 
+		}
+		$password = $_POST['password'];
+		$password2 = $_POST['password2'];
+		if($password!=$password2){
+			$errors.="Password fields must match. <br/>";
+		}
+		if(strlen(trim($username))<=0 || strlen(trim($password))<=0 || strlen(trim($password2))<=0 || strlen(trim($email))<=0){
+			$errors.="All fields are required.<br/>";
+		}
+		if(strlen($errors)>0){
+			echo $errors;
+		}else{
+			$hashedpassword = md5($password);
+			$db = new DB();
+			$result = $db->createNewUser($username, $hashedpassword);
+			$numrows = $result->num_rows;
+			if($numrows >0){
+				//any session variables from the user
+				$_SESSION['username'] = $username;
+				$_SESSION['token'] = $username;
+				header("Location: game.php");
+			}
+			else{
+				echo "Registration Failed.";
+			}
+
+			
+		}
+	}
+	/*
 	if(isset($_GET["username"]) && isset($_GET["score"])){
 		session_start();
 		$username = $_GET['username'];
@@ -45,7 +108,7 @@
 			header("Location: game.php");
 		}
 		echo "invalid login";
-	}
+	}*/
 
 	class DB {
 		private $mysqli;
@@ -71,6 +134,13 @@
 			$querySQL = "SELECT * FROM invaders.t6_users where username= '$username' AND password='$password'";
 			$result = $this->mysqli->query($querySQL);
 			return $result;
+		}
+
+		public function createNewUser($username, $hashPass) {
+			$querySQL = "INSERT INTO invaders.t6_users(username, password) VALUES('$username', '$hashPass')";
+			$result = $this->mysqli->query($querySQL);
+			return $result;
+
 		}
 
 		// inserts score into db
