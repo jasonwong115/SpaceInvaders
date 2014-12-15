@@ -32,14 +32,12 @@
 		?>
 	</table>
 
-	<!--<div> 
-		<button>DeleteUserScore</button>
-		<input placeholder="UserID"></input>
-	</div> -->
-
 	<?php 
-		//if(admin)
-
-	
+		if(isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN") {
+			echo "<div id=\"AdminDeleteButton\"> 
+					<button>DeleteUserScore</button>
+					<input placeholder=\"UserID\"></input>
+				</div>";
+		}	
 	?> 
 </html>
